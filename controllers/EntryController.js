@@ -35,24 +35,24 @@ module.exports = {
 
 	post: function(params, callback){
 
-		var entryParams = {}
-		entryParams['phone'] = params['From']
+		// var entryParams = {}
+		// entryParams['phone'] = params['From']
 
-		var body = params['Body']
+		// var body = params['Body']
 
-		var parts = body.split(' ')
-		var url = ''
-		for (var i = 0; i <parts.length; i++){
-			var word = parts[i]
-			if(word.indexOf('http') != -1){
-				url = word
-				break
-			}
-		}
+		// var parts = body.split(' ')
+		// var url = ''
+		// for (var i = 0; i <parts.length; i++){
+		// 	var word = parts[i]
+		// 	if(word.indexOf('http') != -1){
+		// 		url = word
+		// 		break
+		// 	}
+		// }
 
-		entryParams['url'] = url
+		// entryParams['url'] = url
 
-		Entry.create(entryParams, function(err, entry){
+		Entry.create(params, function(err, entry){
 			if (err){
 				callback(err, null)
 				return

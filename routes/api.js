@@ -16,7 +16,7 @@ router.get('/:resource', function(req, res, next){
 		})
 		return
 	}
-	controller.get(req.query, false, function(err, results){
+	controller.get(req.query, function(err, results){
 		if(err){
 			res.json({
 				confirmation: 'fail',
@@ -39,9 +39,17 @@ router.get('/:resource', function(req, res, next){
 		if(controller == null){
 			res.json({
 				confirmation: 'fail',
-				message: err
+				message: 'Invalid resource'
 			})
 			return
+		}
+		controller.post(req.body, function(err, result){
+			if(err){
+				res.json({
+					confirmation: 'fail',
+				message: err
+			})
+		return
 		}
 		res.json({
 			confirmation: 'success',
